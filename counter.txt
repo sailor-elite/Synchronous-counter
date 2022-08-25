@@ -1,0 +1,87 @@
+#include <iostream>
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+#include <cstdlib>
+
+using namespace std;
+void decToBinary(int decimal)
+{
+int binaryNum[32];
+int i = 0;
+    do  {	
+        binaryNum[i] = decimal % 2;
+        decimal = decimal / 2;
+        i++;
+        }
+    while (decimal > 0);
+    for (int j = i - 1; j >= 0; j--)
+        {
+cout << binaryNum[j];
+        }
+}
+int main()
+{
+    int choice,n,i;
+    bool reset=true;
+
+  while(true)
+  {
+    cout << "Choose counter display mode:"<<endl;
+    cout <<"1. Decimal"<<endl;
+    cout <<"2. Binary"<<endl;
+    cin >> choice;
+    system ("cls");
+    cout << "Insert number of elements"<<endl;
+    cin>>n;
+    system ("cls");
+    int Counter[n];
+    for (i=0;i<=n-1;i++)
+    {
+        cout<< "Insert counter "<<i+1<<" element"<<endl;
+    cin>> Counter[i];
+    }
+    switch (choice)
+    {
+    case 1:
+while (reset ==true)
+{
+
+      for (i=0;i<=n-1;i++)
+      {
+          if(i==n-1)
+          {
+              system("cls");
+              cout<<Counter[i];
+              cout.flush();
+              Sleep(1000);
+              i=-1;
+          }
+          else
+          {
+              system("cls");
+              cout<<Counter[i];
+              cout.flush();
+              Sleep(1000);
+          }
+      }
+}
+break;
+   case 2:
+   while (true)
+   {
+     int decimal;
+     for (i=0;i<=n-1;i++)
+        {
+        system("cls");
+        decimal = Counter[i];
+        decToBinary(decimal);
+        cout.flush();
+        Sleep(1000);
+        }
+   }
+  break;
+  }
+}
